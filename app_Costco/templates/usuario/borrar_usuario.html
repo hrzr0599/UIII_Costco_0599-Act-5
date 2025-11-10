@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Confirmar eliminación</h2>
+<p>¿Seguro que desea borrar al usuario <strong>{{ usuario.nombre_usuario }}</strong> ?</p>
+<form method="post">
+  {% csrf_token %}
+  <button class="btn btn-danger" type="submit">Sí, borrar</button>
+  <a class="btn btn-secondary" href="{% url 'ver_usuario' %}">Cancelar</a>
+</form>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Actualizar Producto</h2>
+<form method="post" action="{% url 'realizar_actualizacion_producto' producto.id %}">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label class="form-label">Nombre</label>
+    <input class="form-control" name="nombre" value="{{ producto.nombre }}">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Descripción</label>
+    <textarea class="form-control" name="descripcion">{{ producto.descripcion }}</textarea>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Precio</label>
+    <input class="form-control" name="precio" value="{{ producto.precio }}">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Stock</label>
+    <input class="form-control" name="stock" value="{{ producto.stock }}">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Categoría</label>
+    <input class="form-control" name="categoria" value="{{ producto.categoria }}">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Código de barras</label>
+    <input class="form-control" name="codigo_barras" value="{{ producto.codigo_barras }}">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">URL de imagen</label>
+    <input class="form-control" name="imagen_url" value="{{ producto.imagen_url }}">
+  </div>
+  <button class="btn btn-primary">Actualizar</button>
+  <a class="btn btn-secondary" href="{% url 'ver_producto' %}">Cancelar</a>
+</form>
+{% endblock %}

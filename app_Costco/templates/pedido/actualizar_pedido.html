@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Actualizar Pedido</h2>
+<form method="post" action="{% url 'realizar_actualizacion_pedido' pedido.id %}">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label>Usuario:</label>
+    <select class="form-select" name="usuario">
+      {% for u in usuarios %}
+        <option value="{{ u.id }}" {% if pedido.usuario.id == u.id %}selected{% endif %}>
+          {{ u.nombre_usuario }}
+        </option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="mb-3">
+    <label>Dirección de Envío:</label>
+    <textarea class="form-control" name="direccion_envio">{{ pedido.direccion_envio }}</textarea>
+  </div>
+  <div class="mb-3">
+    <label>Total Pedido:</label>
+    <input class="form-control" name="total_pedido" value="{{ pedido.total_pedido }}">
+  </div>
+  <div class="mb-3">
+    <label>Método de Pago:</label>
+    <input class="form-control" name="metodo_pago" value="{{ pedido.metodo_pago }}">
+  </div>
+  <div class="mb-3">
+    <label>Estado:</label>
+    <input class="form-control" name="estado_pedido" value="{{ pedido.estado_pedido }}">
+  </div>
+  <div class="mb-3">
+    <label>Productos:</label>
+    <select class="form-select" name="productos">
+      {% for p in productos %}
+        <option value="{{ p.id }}" {% if p in pedido.productos.all %}selected{% endif %}>
+          {{ p.nombre }}
+        </option>
+      {% endfor %}
+    </select>
+  </div>
+  <button class="btn btn-primary">Actualizar</button>
+  <a class="btn btn-secondary" href="{% url 'ver_pedido' %}">Cancelar</a>
+</form>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Agregar Usuario</h2>
+<form method="post">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label class="form-label">Nombre de usuario</label>
+    <input class="form-control" name="nombre_usuario" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input class="form-control" name="email" type="email" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Nombre</label>
+    <input class="form-control" name="nombre">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Apellido</label>
+    <input class="form-control" name="apellido">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Dirección</label>
+    <textarea class="form-control" name="direccion"></textarea>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Teléfono</label>
+    <input class="form-control" name="telefono">
+  </div>
+  <button class="btn btn-primary" type="submit">Guardar</button>
+  <a class="btn btn-secondary" href="{% url 'ver_usuario' %}">Cancelar</a>
+</form>
+{% endblock %}
